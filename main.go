@@ -8,6 +8,7 @@ import (
 	"time"
 	"github.com/tenahubclient/entity"
 	"github.com/tenahubclient/rtoken"
+	"os"
 )
 
 var templ = template.Must(template.ParseGlob("ui/templates/*.html"))
@@ -62,7 +63,13 @@ func main()  {
 	router.Handle("/healthcenters", userHandler.Authorized(http.HandlerFunc(userHandler.Healthcenters)))
 	router.Handle("/logout", userHandler.Authorized(http.HandlerFunc(userHandler.Logout)))
 	router.Handle("/feedback", userHandler.Authorized(http.HandlerFunc(userHandler.Feedback)))
-	http.ListenAndServe(":8282", router)
+
+	err := http.ListenAndServe(":"+os.Getenv("PORT"), router)
+	if err != nil {
+		panic(err)
+	}
+
+	//http.ListenAndServe(":8282", router)
 }
 
 func configSess() *entity.Session {

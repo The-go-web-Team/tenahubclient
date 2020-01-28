@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc675ba2-3659-4fcf-b314-83a11aa2c357" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/delivery/http/handler/service_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/delivery/http/handler/service_handler.go" afterDir="false" />
-    </list>
+    <list default="true" id="bc675ba2-3659-4fcf-b314-83a11aa2c357" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -188,11 +186,6 @@
               <item name="tenahubclient" type="462c0819:PsiDirectoryNode" />
               <item name="session" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="tenahubclient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tenahubclient" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -204,7 +197,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/natna/go/src/github.com/tenahubclient/entity/entities.go&#10;entity&#9;null&#9;null" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tenahubapi" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
