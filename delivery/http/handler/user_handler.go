@@ -8,14 +8,14 @@ import (
 	"net/url"
 	"strconv"
 	"strings"
-	"github.com/TenaHub/client/service"
-	"github.com/TenaHub/client/session"
+	"github.com/tenahubclient/service"
+	"github.com/tenahubclient/session"
 
-	"github.com/TenaHub/client/entity"
-	"github.com/TenaHub/client/rtoken"
-	"github.com/TenaHub/client/form"
+	"github.com/tenahubclient/entity"
+	"github.com/tenahubclient/rtoken"
+	"github.com/tenahubclient/form"
 	"golang.org/x/crypto/bcrypt"
-	"github.com/TenaHub/client/permission"
+	"github.com/tenahubclient/permission"
 )
 
 // UserHandler handles user related http requests

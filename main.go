@@ -3,11 +3,11 @@ package main
 import (
 	"html/template"
 	"net/http"
-	"github.com/TenaHub/client/delivery/http/handler"
+	"github.com/tenahubclient/delivery/http/handler"
 	"fmt"
 	"time"
-	"github.com/TenaHub/client/entity"
-	"github.com/TenaHub/client/rtoken"
+	"github.com/tenahubclient/entity"
+	"github.com/tenahubclient/rtoken"
 )
 
 var templ = template.Must(template.ParseGlob("client/ui/templates/*.html"))

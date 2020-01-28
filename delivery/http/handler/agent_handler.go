@@ -7,11 +7,11 @@ import (
 	"encoding/json"
 	"bytes"
 	"strconv"
-	"github.com/TenaHub/client/service"
-	"github.com/TenaHub/client/entity"
-	"github.com/TenaHub/client/form"
+	"github.com/tenahubclient/service"
+	"github.com/tenahubclient/entity"
+	"github.com/tenahubclient/form"
 	"net/url"
-	"github.com/TenaHub/client/rtoken"
+	"github.com/tenahubclient/rtoken"
 )
 
 

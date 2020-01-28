@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"encoding/json"
 	"fmt"
-	"github.com/TenaHub/client/entity"
+	"github.com/tenahubclient/entity"
 )
 // var baseURL = "http://localhost:8181/v1"
 

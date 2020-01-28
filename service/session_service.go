@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/TenaHub/client/entity"
+	"github.com/tenahubclient/entity"
 	"net/http"
 	"fmt"
 	"io/ioutil"

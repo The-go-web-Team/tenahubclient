@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"encoding/json"
 	"fmt"
-	"github.com/TenaHub/client/entity"
+	"github.com/tenahubclient/entity"
 )
 
 func FetchService(id uint) ([]entity.Service, error) {

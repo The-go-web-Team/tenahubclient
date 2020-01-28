@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/TenaHub/client/rtoken"
+	"github.com/tenahubclient/rtoken"
 	"github.com/dgrijalva/jwt-go"
 )
 

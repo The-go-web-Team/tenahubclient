@@ -3,16 +3,16 @@ package handler
 import (
 	"net/http"
 	"html/template"
-	"github.com/TenaHub/client/service"
+	"github.com/tenahubclient/service"
 	"fmt"
 	"encoding/json"
 	"bytes"
 	"golang.org/x/crypto/bcrypt"
 	"strconv"
-	"github.com/TenaHub/client/entity"
+	"github.com/tenahubclient/entity"
 	"net/url"
-	"github.com/TenaHub/client/rtoken"
-	"github.com/TenaHub/client/form"
+	"github.com/tenahubclient/rtoken"
+	"github.com/tenahubclient/form"
 )
 
 
