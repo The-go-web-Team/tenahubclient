@@ -136,7 +136,7 @@ func (ah *AgentHandler) AgentPage(w http.ResponseWriter, r *http.Request) {
 	}
 	agentData, err := service.FetchAgent(id)
 	if err != nil {
-		http.Redirect(w, r, "http://localhost:8282/login", http.StatusSeeOther)
+		http.Redirect(w, r, service.BaseClientUrl+"/login", http.StatusSeeOther)
 		return
 	}
 	ah.loggedInAgent = agentData

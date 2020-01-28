@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"strconv"
 	"fmt"
+	"github.com/tenahubclient/service"
 )
 
 type ServiceHandler struct {
@@ -26,7 +27,7 @@ func (adh *ServiceHandler) AddService(w http.ResponseWriter, r *http.Request) {
 	// healthcenter id is get from the cookie
 	data := entity.Service{Name:name, Description:description,HealthCenterID: uint(id)}
 	jsonValue, _ := json.Marshal(data)
-	response, err := http.Post("http://localhost:8181/v1/service","application/json",bytes.NewBuffer(jsonValue))
+	response, err := http.Post(service.BaseURL+"/service","application/json",bytes.NewBuffer(jsonValue))
 	var status addStatus
 	if err != nil {
 		status.Success = false
@@ -48,7 +49,7 @@ func (adh *ServiceHandler) EditService(w http.ResponseWriter, r *http.Request) {
 
 		data := entity.Service{ID :uint(id),Name:name, Description:description}
 		jsonValue, _ := json.Marshal(data)
-		URL := fmt.Sprintf("http://localhost:8181/v1/service/%d", id)
+		URL := fmt.Sprintf(service.BaseURL+"/service/%d", id)
 		client := &http.Client{}
 		req, err := http.NewRequest(http.MethodPut, URL, bytes.NewBuffer(jsonValue))
 		_, err = client.Do(req)
@@ -67,7 +68,7 @@ func (adh *ServiceHandler) EditService(w http.ResponseWriter, r *http.Request) {
 func (adh *ServiceHandler) DeleteService(w http.ResponseWriter, r *http.Request) {
 	client := &http.Client{}
 	id,_ := strconv.Atoi(r.FormValue("hidden_service_id"))
-	URL := fmt.Sprintf("http://localhost:8181/v1/service/%d",id)
+	URL := fmt.Sprintf(service.BaseURL+"/service/%d",id)
 	fmt.Println("We are here")
 	req, err := http.NewRequest(http.MethodDelete,URL,nil)
 	var status addStatus
