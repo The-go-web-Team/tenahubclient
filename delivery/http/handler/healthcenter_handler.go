@@ -67,7 +67,7 @@ func (hch *HealthCenterHandler) Authenticated(next http.Handler) http.Handler {
 		ok := hch.LoggedIn(r)
 		fmt.Println(ok)
 		if !ok {
-			http.Redirect(w, r, "/healthcenter/login", http.StatusSeeOther)
+			http.Redirect(w, r, service.BaseClientUrl+"/healthcenter/login", http.StatusSeeOther)
 			return
 		}
 		ctx := context.WithValue(r.Context(), ctxUserSessionKey, hch.UserSess)
@@ -127,7 +127,7 @@ func (adh *HealthCenterHandler) EditHealthCenter(w http.ResponseWriter, r *http.
 		id := adh.LoggedInUser.ID
 		healthcenter, err := service.FetchHealthCenter(uint(id))
 		if err != nil {
-			http.Redirect(w, r, "/healthcenter/login", http.StatusSeeOther)
+			http.Redirect(w, r, service.BaseClientUrl+"/healthcenter/login", http.StatusSeeOther)
 		}
 		services, err := service.FetchService(uint(id))
 		fmt.Println("service is ", services)
@@ -165,7 +165,7 @@ func (adh *HealthCenterHandler) EditHealthCenter(w http.ResponseWriter, r *http.
 	fileName = ""
 	data := entity.HealthCenter{ID:uint(id),Name:Name, Email:email,PhoneNumber:phone,City:city,Password:password,ProfilePic:fileName}
 	jsonValue, _ := json.Marshal(data)
-	URL := fmt.Sprintf("http://localhost:8181/v1/healthcenter/%d", id)
+	URL := fmt.Sprintf(service.BaseURL+"/healthcenter/%d", id)
 	client := &http.Client{}
 	req, err := http.NewRequest(http.MethodPut, URL, bytes.NewBuffer(jsonValue))
 	resp, err := client.Do(req)
@@ -188,7 +188,7 @@ func (adh *HealthCenterHandler) EditHealthCenter(w http.ResponseWriter, r *http.
 func (adh *HealthCenterHandler) DeleteHealthCenter(w http.ResponseWriter, r *http.Request) {
 	client := &http.Client{}
 	id,_ := strconv.Atoi(r.FormValue("hidden_id"))
-	URL := fmt.Sprintf("http://localhost:8181/v1/healthcenter/%d",id)
+	URL := fmt.Sprintf(service.BaseURL+"/healthcenter/%d",id)
 
 	req, err := http.NewRequest(http.MethodDelete,URL,nil)
 
@@ -221,7 +221,7 @@ func (ah *HealthCenterHandler) HealthCenterPage(w http.ResponseWriter, r *http.R
 	id := ah.LoggedInUser.ID
 	healthcenter, err := service.FetchHealthCenter(uint(id))
 	if err != nil {
-		http.Redirect(w, r, "/healthcenter/login", http.StatusSeeOther)
+		http.Redirect(w, r, service.BaseClientUrl+"/healthcenter/login", http.StatusSeeOther)
 	}
 	services, err := service.FetchService(uint(id))
 	fmt.Println("service is ", services)
@@ -287,7 +287,7 @@ func (ah *HealthCenterHandler) HealthCenterLogin(w http.ResponseWriter, r *http.
 				return
 			}
 			ah.UserSess = newSess
-			http.Redirect(w, r, "/healthcenter", http.StatusSeeOther)
+			http.Redirect(w, r, service.BaseClientUrl+"/healthcenter", http.StatusSeeOther)
 		}
 	}
 }
@@ -298,7 +298,7 @@ func (uh *HealthCenterHandler) HealthCenterLogout(w http.ResponseWriter, r *http
 	service.DeleteSession(uh.UserSess.UUID)
 	uh.LoggedInUser = nil
 	fmt.Println("logging out")
-	http.Redirect(w, r, "/healthcenter/login", http.StatusSeeOther)
+	http.Redirect(w, r, service.BaseClientUrl+"/healthcenter/login", http.StatusSeeOther)
 }
 
 func FileUpload(r *http.Request, folderName string) (string, error) {
@@ -314,7 +314,7 @@ func FileUpload(r *http.Request, folderName string) (string, error) {
 		panic(err)
 	}
 
-	path := filepath.Join(wd, "client","ui", "assets", "img", "uploads",folderName, header.Filename)
+	path := filepath.Join(wd, "ui", "assets", "img", "uploads",folderName, header.Filename)
 
 	f, err := os.OpenFile(path,os.O_WRONLY|os.O_CREATE, 0666)
 	if err != nil {
