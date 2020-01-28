@@ -28,7 +28,7 @@ func main()  {
 
 
 	router := http.NewServeMux()
-	fs := http.FileServer(http.Dir("client/ui/assets"))
+	fs := http.FileServer(http.Dir("ui/assets"))
 	router.Handle("/assets/", http.StripPrefix("/assets/", fs))
 
 
