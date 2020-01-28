@@ -287,7 +287,7 @@ func (ah *HealthCenterHandler) HealthCenterLogin(w http.ResponseWriter, r *http.
 				return
 			}
 			ah.UserSess = newSess
-			http.Redirect(w, r, "http://localhost:8282/healthcenter", http.StatusSeeOther)
+			http.Redirect(w, r, "/healthcenter", http.StatusSeeOther)
 		}
 	}
 }
@@ -298,7 +298,7 @@ func (uh *HealthCenterHandler) HealthCenterLogout(w http.ResponseWriter, r *http
 	service.DeleteSession(uh.UserSess.UUID)
 	uh.LoggedInUser = nil
 	fmt.Println("logging out")
-	http.Redirect(w, r, "http://localhost:8282/healthcenter/login", http.StatusSeeOther)
+	http.Redirect(w, r, "/healthcenter/login", http.StatusSeeOther)
 }
 
 func FileUpload(r *http.Request, folderName string) (string, error) {

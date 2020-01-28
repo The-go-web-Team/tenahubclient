@@ -196,11 +196,11 @@ func (uh *UserHandler) Login(w http.ResponseWriter, r *http.Request) {
 			fmt.Printf("id: %d\n", uh.LoggedInUser.ID)
 			switch uh.LoggedInUser.Role {
 			case "admin":
-				urll = "http://localhost:8282/admin"
+				urll = service.BaseClientUrl+"/admin"
 			case "agent":
-				urll = "http://localhost:8282/agent"
+				urll = service.BaseClientUrl+"/agent"
 			case "user":
-				urll = "http://localhost:8282/home"
+				urll = service.BaseClientUrl+"/home"
 			}
 			fmt.Println(urll)
 			//r.Form.Add("id", strconv.Itoa(int(uh.LoggedInUser.ID)))
@@ -213,10 +213,10 @@ func (uh *UserHandler) Login(w http.ResponseWriter, r *http.Request) {
 			Url.RawQuery = parameters.Encode()
 
 			if err != nil {
-				http.Redirect(w, r, "http://localhost:8282/login", http.StatusSeeOther)
+				http.Redirect(w, r, service.BaseClientUrl+"/login", http.StatusSeeOther)
 			}
 
-			if r.Referer() ==  "http://localhost:8282/login" {
+			if r.Referer() ==  service.BaseClientUrl+"/login" {
 				http.Redirect(w, r, Url.String(), http.StatusSeeOther)
 				return
 			}
@@ -311,7 +311,7 @@ func (uh *UserHandler) SignUp(w http.ResponseWriter, r *http.Request) {
 		} else {
 			//w.Write([]byte("success"))
 			//w.Header().Set("Location:", "http://locahost:8282/login")
-			http.Redirect(w, r, "http://localhost:8282/login", http.StatusSeeOther)
+			http.Redirect(w, r, service.BaseClientUrl+"/login", http.StatusSeeOther)
 		}
 	}
 }
@@ -501,7 +501,7 @@ func (adh *UserHandler) DeleteUser(w http.ResponseWriter, r *http.Request) {
 	client := &http.Client{}
 	id,_ := strconv.Atoi(r.FormValue("hidden_id"))
 	fmt.Println("deleting")
-	URL := fmt.Sprintf("http://localhost:8181/v1/users/%d",id)
+	URL := fmt.Sprintf("%s/users/%d",service.BaseURL,id)
 
 	req, err := http.NewRequest(http.MethodDelete,URL,nil)
 
