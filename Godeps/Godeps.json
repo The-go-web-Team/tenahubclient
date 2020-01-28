@@ -1,0 +1,23 @@
+{
+	"ImportPath": "github.com/tenahubclient",
+	"GoVersion": "go1.13",
+	"GodepVersion": "v80",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/dgrijalva/jwt-go",
+			"Comment": "v3.2.0-20-gdc14462",
+			"Rev": "dc14462fd58732591c7fa58cc8496d6824316a82"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/bcrypt",
+			"Rev": "becbf705a91575484002d598f87d74f0002801e7"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/blowfish",
+			"Rev": "becbf705a91575484002d598f87d74f0002801e7"
+		}
+	]
+}

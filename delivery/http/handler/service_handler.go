@@ -3,7 +3,7 @@ package handler
 import (
 	"html/template"
 	"net/http"
-	"github.com/TenaHub/api/entity"
+	"github.com/tenahubclient/entity"
 	"encoding/json"
 	"bytes"
 	"strconv"
