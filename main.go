@@ -10,7 +10,7 @@ import (
 	"github.com/tenahubclient/rtoken"
 )
 
-var templ = template.Must(template.ParseGlob("client/ui/templates/*.html"))
+var templ = template.Must(template.ParseGlob("ui/templates/*.html"))
 
 func main()  {
 	csrfSignKey := []byte(rtoken.GenerateRandomID(32))
